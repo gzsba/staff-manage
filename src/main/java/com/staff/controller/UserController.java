@@ -3,11 +3,17 @@ package com.staff.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.staff.pojo.User;
 import com.staff.service.impl.UserService;
+
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -38,5 +44,13 @@ public class UserController {
     public String GetUser(@PathVariable int id){
         return userService.Sel(id).toString();
     }
-
+    
+    @GetMapping("find_page")
+    public Object findPage(int pageNo, int pageSize){
+        //设置分页信息
+        PageHelper.startPage(pageNo, pageSize);
+        //生成分页信息对象
+        PageInfo<User> pageInfo = new PageInfo<>();
+        return pageInfo;
+    }
 }

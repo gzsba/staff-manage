@@ -1,10 +1,8 @@
 package com.staff.controller;
 
-import com.staff.dao.DepartmentDao;
-import com.staff.dao.EmployeeDao;
-import com.staff.pojo.Department;
-import com.staff.pojo.Employee;
-import com.staff.service.EmployeeService;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Collection;
-import java.util.Map;
+import com.staff.dao.DepartmentDao;
+import com.staff.dao.EmployeeDao;
+import com.staff.pojo.Department;
+import com.staff.pojo.Employee;
+import com.staff.pojo.User;
+import com.staff.service.impl.EmployeeService;
 
 @Controller
 public class EmployeeController {
@@ -28,8 +30,8 @@ public class EmployeeController {
 
     @RequestMapping("/emps")
     public String list(Model model) {
-    	Map<Integer, Employee> employees = employeeService.getAllEmployees();
-        model.addAttribute("emps", employees.values());
+    	List<Employee> employees = employeeService.getAllEmployees();
+        model.addAttribute("emps", employees);
         return "emp/list";
     }
 

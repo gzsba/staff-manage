@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.staff.mapper.EmployeeMapper">
+	<resultMap id="BaseResultMap" type="com.example.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="lastName" jdbcType="VARCHAR" property="lastName" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="gender" jdbcType="INTEGER" property="gender" />
+        <!-- <result column="department" jdbcType="com.staff.pojo.Department" property="department" /> -->
+        <result column="date" jdbcType="DATE" property="date" />
+        <result column="state" jdbcType="BIT" property="state" />
+    </resultMap>
+ 
+    <select id="getEmployees" resultType="com.staff.pojo.Employee">
+        select * from employee
+    </select>

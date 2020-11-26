@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.staff.pojo.User;
+import com.staff.pojo.Employee;
+
 @Repository
-public interface UserMapper {
-	User Sel(int id);
-	
-	List<User> getUsers();
+public interface EmployeeMapper {
+
+	List<Employee> getEmployees();
 }
